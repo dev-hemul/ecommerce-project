@@ -4,10 +4,12 @@ import './HomePage.css'
 export function HomePage() {
   return (
     <>
+      <title>Ecommerce Project</title>
+
       <div className="header">
         <div className="left-section">
           <a
-            href="index.html"
+            href="/"
             className="header-link"
           >
             <img
@@ -39,7 +41,7 @@ export function HomePage() {
         <div className="right-section">
           <a
             className="orders-link header-link"
-            href="orders.html"
+            href="/orders"
           >
 
             <span className="orders-text">Orders</span>
@@ -47,7 +49,7 @@ export function HomePage() {
 
           <a
             className="cart-link header-link"
-            href="checkout.html"
+            href="/checkout"
           >
             <img
               className="cart-icon"
