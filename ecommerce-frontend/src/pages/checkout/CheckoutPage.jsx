@@ -10,15 +10,18 @@ export function CheckoutPage({cart}) {
   const [paymentSummary, setPaymentSummary] = useState([null]);
 
   useEffect(() => {
-    axios.get('/api/delivery-options?expand=estimatedDeliveryTime')
-      .then((response) => {
-        setDeliveryOptions(response.data);
-      })
 
-    axios.get('/api/payment-summary')
-      .then((response) => {
-        setPaymentSummary(response.data);
-      })
+    const fetchCheckoutData = async () => {
+      let response = await axios.get('/api/delivery-options?expand=estimatedDeliveryTime')
+      setDeliveryOptions(response.data);
+
+      response = await axios.get('/api/payment-summary')
+      setPaymentSummary(response.data);
+    }
+
+    fetchCheckoutData();
+
+
   }, [])
 
   return (
@@ -28,7 +31,7 @@ export function CheckoutPage({cart}) {
       <div className="checkout-header">
         <div className="header-content">
           <div className="checkout-header-left-section">
-            <a href="/ecommerce-frontend/public">
+            <a href="/">
               <img
                 className="logo"
                 src="images/logo.png"
@@ -44,7 +47,7 @@ export function CheckoutPage({cart}) {
             Checkout (
             <a
               className="return-to-home-link"
-              href="/ecommerce-frontend/public"
+              href="/"
             >3 items
             </a>
             )
@@ -61,9 +64,12 @@ export function CheckoutPage({cart}) {
 
         <div className="checkout-grid">
 
-          <OrderSummary cart={cart} deliveryOptions={deliveryOptions} />
+          <OrderSummary
+            cart={cart}
+            deliveryOptions={deliveryOptions}
+          />
 
-          <PaymentSummary paymentSummary={paymentSummary}/>
+          <PaymentSummary paymentSummary={paymentSummary} />
         </div>
       </div>
     </>
