@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {useEffect, useState} from 'react';
-import {Header} from '../components/Header';
-import { formatMoney} from "../utils/money";
+import {Header} from '../../components/Header.jsx';
+import { formatMoney} from "../../utils/money.js";
 import './HomePage.css';
 
 export function HomePage({cart}) {
