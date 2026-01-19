@@ -23,6 +23,7 @@ export function Product({product, loadCart}) {
     <div className="product-container">
       <div className="product-image-container">
         <img
+          data-testid="product-image"
           className="product-image"
           src={product.image}
           alt={product.name}
