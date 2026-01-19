@@ -3,6 +3,10 @@ import {Product} from "./Product.jsx";
 export function ProductsGrid({products, loadCart}) {
 
   return (
-    <Product key={products.id} products={products} loadCart={loadCart}/>
+    <div className="products-grid">
+      {products.map((product) => (
+        <Product key={product.id} product={product} loadCart={loadCart} />
+      ))}
+    </div>
   );
 }
